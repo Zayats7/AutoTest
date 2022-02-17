@@ -66,5 +66,4 @@ public class NewMailLoginPage extends MailBase {
         LOGGER.info("Нажимаем на кнопку входа");
         driver.findElement(GO_TO).click();
     }
-
 }
