@@ -1,6 +1,6 @@
 package MainPages;
 
-import Base.Base;
+import Base.MailBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.logging.Logger;
 
-public class MailMainPage extends Base {
+public class MailMainPage extends MailBase {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(MailMainPage.class));
     private static final By WRITE_MESSAGE = By.xpath(".//a[contains(@title, 'Написать письмо')]");

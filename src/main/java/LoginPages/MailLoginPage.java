@@ -1,23 +1,22 @@
 package LoginPages;
 
-import Base.Base;
+import Base.MailBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.logging.Logger;
 
-public class MailLoginPage extends Base {
+public class MailLoginPage extends MailBase {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(MailLoginPage.class));
-    private static final String WEB_SITE = "https://mail.ru/";
     private static final By LOGIN_BOX = By.xpath(".//input[contains(@name, 'login')]");
     private static final By PASSWORD_BOX = By.xpath(".//input[contains(@name, 'password')]");
     private static final String LOGIN = "margleibblan@mail.ru";
     private static final String PASSWORD = "qwedcxzasdfghjkl;'\\";
     private static final By CHECKBOX = By.xpath(".//input[contains(@type, 'checkbox')]");
     private static final By GO_TO_PASSWORD = By.xpath(".//button[contains(@data-testid, 'enter-password')]");
-    private static final By CHECK_E_MAIL = By.xpath(".//*[@id= 'mailbox']//div[@name= 'clb36299772']");
+    //private static final By CHECK_E_MAIL = By.xpath(".//*[@id= 'mailbox']//div[@name= 'clb36299772']");
     private static final By GO_TO = By.xpath(".//button[contains(@data-testid, 'login-to-mail')]");
     private static final By LOGIN_VISIBLE = By.name("login");
     private static final By PASSWORD_VISIBLE = By.name("password");
