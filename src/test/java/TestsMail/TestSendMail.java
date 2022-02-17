@@ -4,8 +4,10 @@ import LoginPages.NewMailLoginPage;
 import MainPages.MailMainPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.util.logging.Logger;
 
 /**
@@ -21,8 +23,10 @@ import java.util.logging.Logger;
 public class TestSendMail {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(TestSendMail.class));
+    private static final By CHECK_E_MAIL = By.xpath(".//*[contains(@class, 'email-block__inner-content')]");
+    private static final String LOGIN = "margleibblan@mail.ru";
     private static final String WEB_SITE = "https://mail.ru/";
-      WebDriver driver = new ChromeDriver();
+    WebDriver driver = new ChromeDriver();
 
     @BeforeAll
     static void registerDriver() {
@@ -36,19 +40,19 @@ public class TestSendMail {
     }
 
     @Test
-    public void testSentMessage() {
+    public void testSentMessage() throws InterruptedException {
         NewMailLoginPage loginPage = new NewMailLoginPage(driver);
         LOGGER.info("Запускаем браузер");
         driver.get(WEB_SITE);
         LOGGER.info("Логин");
         loginPage.doLogin();
         loginPage.doCheckBox();
-//        TODO реализовать проверку валидности почты
-//        LOGGER.info("Сравниваем введенный адрес почты и отображаемый");
-        //String emailInfo = driver.findElement(CHECK_E_MAIL).getAttribute(CHECK_E_MAIL);
-//        Assertions.assertTrue(emailInfo.contains(LOGIN));
         LOGGER.info("Пароль");
         loginPage.doPassword();
+        LOGGER.info("Сравниваем введенный адрес почты и отображаемый");
+        Thread.sleep(5000);
+        String compareEmail = driver.findElement(CHECK_E_MAIL).getText();
+        Assertions.assertEquals(LOGIN, compareEmail, "Логины не совпадают");
         LOGGER.info("Заходим в почту");
         loginPage.goToMainPage();
 
