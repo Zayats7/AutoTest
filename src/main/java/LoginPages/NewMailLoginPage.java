@@ -18,8 +18,7 @@ public class NewMailLoginPage extends MailBase {
     private static final By CHECKBOX = By.xpath(".//*[contains(@class, 'box-0-2-111 activeBox-0-2-116')]");
     private static final By GO_TO_PASSWORD = By.xpath(".//button[contains(@data-test-id, 'next-button')]");
     //private static final By CHECK_E_MAIL = By.xpath(".//*[@id= 'mailbox']//div[@name= 'clb36299772']");
-    private static final By GO_TO = By.xpath(".//button[contains(@data-testid, 'submit-button')]");
-    private static final By LOGIN_VISIBLE = By.name("username");
+    private static final By GO_TO = By.xpath(".//button[contains(@data-test-id, 'submit-button')]");
     private static final By PASSWORD_VISIBLE = By.name("password");
     private static final By LOGIN_FRAME = By.xpath("//iframe[contains(@class, 'ag-popup__frame__layout__iframe')]");
 
