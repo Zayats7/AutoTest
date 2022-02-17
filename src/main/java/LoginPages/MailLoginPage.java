@@ -16,7 +16,6 @@ public class MailLoginPage extends MailBase {
     private static final String PASSWORD = "qwedcxzasdfghjkl;'\\";
     private static final By CHECKBOX = By.xpath(".//input[contains(@type, 'checkbox')]");
     private static final By GO_TO_PASSWORD = By.xpath(".//button[contains(@data-testid, 'enter-password')]");
-    //private static final By CHECK_E_MAIL = By.xpath(".//*[@id= 'mailbox']//div[@name= 'clb36299772']");
     private static final By GO_TO = By.xpath(".//button[contains(@data-testid, 'login-to-mail')]");
     private static final By LOGIN_VISIBLE = By.name("login");
     private static final By PASSWORD_VISIBLE = By.name("password");

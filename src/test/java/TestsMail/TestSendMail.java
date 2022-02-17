@@ -20,6 +20,10 @@ import java.util.logging.Logger;
  * 6. Отправить сообшение
  * 7. Проверить что сообщение отправлено
  */
+
+//TODO разобраться с extends (сделать обертку браузера в отдельном классе)
+//TODO разобраться с аннотациями (Выкинуть их из теста)
+//TODO перевести тест на селенид
 public class TestSendMail {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(TestSendMail.class));
@@ -44,13 +48,14 @@ public class TestSendMail {
         NewMailLoginPage loginPage = new NewMailLoginPage(driver);
         LOGGER.info("Запускаем браузер");
         driver.get(WEB_SITE);
+
         LOGGER.info("Логин");
         loginPage.doLogin();
         loginPage.doCheckBox();
         LOGGER.info("Пароль");
         loginPage.doPassword();
         LOGGER.info("Сравниваем введенный адрес почты и отображаемый");
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         String compareEmail = driver.findElement(CHECK_E_MAIL).getText();
         Assertions.assertEquals(LOGIN, compareEmail, "Логины не совпадают");
         LOGGER.info("Заходим в почту");
@@ -64,7 +69,7 @@ public class TestSendMail {
         mainPage.whomLine();
         mainPage.quickPeople();
         mainPage.mySelfButton();
-        LOGGER.info("Заполняем тему и пишем пьсьмо");
+        LOGGER.info("Заполняем тему и пишем письмо");
         mainPage.topic();
         mainPage.texBox();
         LOGGER.info("Отправляем письмо");
