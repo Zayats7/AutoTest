@@ -31,20 +31,20 @@ public class MailMainPage extends MailBase {
         $(WRITE_MESSAGE).shouldBe(visible).click();
     }
 
-    public void messageLayer() {
-        LOGGER.warning("Ждем появления леера письма");
-        $(MESSAGE_LAYER).shouldBe(visible);
-    }
+//    public void messageLayer() {
+//        LOGGER.warning("Ждем появления леера письма");
+//        $(MESSAGE_LAYER).shouldBe(visible);
+//    }
 
     public void whomLine() {
         LOGGER.warning("Проверяем видимость поля адресата и кликаем на него");
         $(WHOM).shouldBe(visible).click();
     }
 
-    public void quickPeople() {
-        LOGGER.warning("Ждем видимость леера быстрых адресатов");
-        $(FAST_MESSAGE_LAYER).shouldBe(visible);
-    }
+//    public void quickPeople() {
+//        LOGGER.warning("Ждем видимость леера быстрых адресатов");
+//        $(FAST_MESSAGE_LAYER).shouldBe(visible);
+//    }
 
     public void mySelfButton() {
         LOGGER.warning("Прверяем видимость себя в списке адресатов и кликаем");

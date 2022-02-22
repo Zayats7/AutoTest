@@ -22,9 +22,9 @@ import static com.codeborne.selenide.Selenide.*;
  * 7. Проверить что сообщение отправлено
  */
 
-//TODO разобраться с extends (сделать обертку браузера в отдельном классе)
-//TODO разобраться с аннотациями (Выкинуть их из теста)
-//TODO перевести тест на селенид
+//TODO разобраться с extends (сделать обертку браузера в отдельном классе) (Progress: )
+//TODO разобраться с аннотациями (Выкинуть их из теста) (Progress: )
+//TODO перевести тест на селенид (Progress: 70%)
 public class TestSendMail {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(TestSendMail.class));
@@ -57,7 +57,7 @@ public class TestSendMail {
         loginPage.doPassword();
         LOGGER.info("Сравниваем введенный адрес почты и отображаемый");
         Thread.sleep(2000);
-        String compareEmail = $(CHECK_E_MAIL).getText(); //driver.findElement(CHECK_E_MAIL).getText();
+        String compareEmail = $(CHECK_E_MAIL).getText();
         Assertions.assertEquals(LOGIN, compareEmail, "Логины не совпадают");
         LOGGER.info("Заходим в почту");
         loginPage.goToMainPage();
@@ -65,10 +65,8 @@ public class TestSendMail {
         MailMainPage mainPage = new MailMainPage(driver);
         LOGGER.info("Написать письмо");
         mainPage.writeMessageButton();
-        mainPage.messageLayer();
         LOGGER.info("Выбираем адресата");
         mainPage.whomLine();
-        mainPage.quickPeople();
         mainPage.mySelfButton();
         LOGGER.info("Заполняем тему и пишем письмо");
         mainPage.topic();

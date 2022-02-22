@@ -40,26 +40,11 @@ public class NewMailLoginPage extends MailBase {
         $(LOGIN_CONTENT).shouldBe(visible);
         LOGGER.info("Находим поле для ввода почты и вводим почту");
         $(LOGIN_BOX).shouldBe(visible).sendKeys(LOGIN);
-//        LOGGER.warning("Находим кнопку для ввода логина");
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(BUTTON_TO));
-//        LOGGER.info("Кликаем на кнопку для перехода к полю ввода логина");
-//        driver.findElement(BUTTON_TO).click();
-//        LOGGER.warning("Ждем появления формы логина");
-//        driver.switchTo().frame(driver.findElement(LOGIN_FRAME));
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//div[contains(@id, 'login-content')]")));
-//        LOGGER.warning("Находим поле для ввода почты");
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BOX));
-//        LOGGER.info("Вводим почту");
-//        driver.findElement(LOGIN_BOX).sendKeys(LOGIN);
     }
 
     public void doCheckBox() {
         LOGGER.warning("Проверяем видимость чекбокса и выключаем его");
         $(CHECKBOX).shouldBe(visible).click();
-//        LOGGER.warning("Проверяем видимость чекбокса'");
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(CHECKBOX));
-//        LOGGER.info("Выключаем чекбокс 'Запомнить'");
-//        driver.findElement(CHECKBOX).click();
     }
 
     public void doPassword() {
@@ -67,23 +52,10 @@ public class NewMailLoginPage extends MailBase {
         $(GO_TO_PASSWORD).shouldBe(visible).click();
         LOGGER.info("Находим поле для ввода пароля и вводим пароль");
         $(PASSWORD_BOX).shouldBe(visible).sendKeys(PASSWORD);
-//        LOGGER.warning("Проверяем видимость кнопки для ввода пароля");
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(GO_TO_PASSWORD));
-//        LOGGER.info("Нажимаем на кнопку 'Ввести пароль'");
-//        driver.findElement(GO_TO_PASSWORD).click();
-//        LOGGER.warning("Находим поле для ввода пароля");
-//        driver.findElement(PASSWORD_BOX);
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(PASSWORD_VISIBLE));
-//        LOGGER.info("Вводим пароль");
-//        driver.findElement(PASSWORD_VISIBLE).sendKeys(PASSWORD);
     }
 
     public void goToMainPage() {
         LOGGER.warning("Проверяем видимость кнопки входа и заходим в аккаунт");
         $(GO_TO).shouldBe(visible).click();
-//        LOGGER.warning("Проверяем видимость кнопки входа");
-//        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(GO_TO));
-//        LOGGER.info("Нажимаем на кнопку входа");
-//        driver.findElement(GO_TO).click();
     }
 }
