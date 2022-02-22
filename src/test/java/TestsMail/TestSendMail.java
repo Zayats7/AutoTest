@@ -2,6 +2,9 @@ package TestsMail;
 
 import LoginPages.NewMailLoginPage;
 import MainPages.MailMainPage;
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
+import io.cucumber.java.After;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -9,6 +12,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.logging.Logger;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 
 /**
  * Тест проверяет логин и отправку письма самому себе
@@ -40,7 +46,7 @@ public class TestSendMail {
     @BeforeEach
     void initDriver() {
         LOGGER.info("Открываем начальную страницу");
-        driver.get(WEB_SITE);
+        open(WEB_SITE);
     }
 
     @Test
@@ -56,7 +62,7 @@ public class TestSendMail {
         loginPage.doPassword();
         LOGGER.info("Сравниваем введенный адрес почты и отображаемый");
         Thread.sleep(2000);
-        String compareEmail = driver.findElement(CHECK_E_MAIL).getText();
+        String compareEmail = $(CHECK_E_MAIL).getText(); //driver.findElement(CHECK_E_MAIL).getText();
         Assertions.assertEquals(LOGIN, compareEmail, "Логины не совпадают");
         LOGGER.info("Заходим в почту");
         loginPage.goToMainPage();
@@ -81,7 +87,7 @@ public class TestSendMail {
     @AfterEach
     void killDriver() {
         LOGGER.info("Закрываем браузер");
-        driver.quit();
+        closeWebDriver();
     }
 
 }
