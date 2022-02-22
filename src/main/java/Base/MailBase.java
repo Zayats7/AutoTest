@@ -1,10 +1,8 @@
 package Base;
 
-import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.codeborne.selenide.Selenide;
 
 import java.time.Duration;
 

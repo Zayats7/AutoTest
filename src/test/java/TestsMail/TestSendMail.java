@@ -2,9 +2,6 @@ package TestsMail;
 
 import LoginPages.NewMailLoginPage;
 import MainPages.MailMainPage;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
-import io.cucumber.java.After;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
@@ -12,8 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.logging.Logger;
-
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 /**
@@ -87,7 +82,7 @@ public class TestSendMail {
     @AfterEach
     void killDriver() {
         LOGGER.info("Закрываем браузер");
-        closeWebDriver();
+        driver.close();
     }
 
 }

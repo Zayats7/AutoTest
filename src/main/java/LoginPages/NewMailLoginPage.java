@@ -3,7 +3,6 @@ package LoginPages;
 import Base.MailBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import com.codeborne.selenide.Selenide;
 
 import java.util.logging.Logger;
@@ -23,7 +22,6 @@ public class NewMailLoginPage extends MailBase {
     private static final By CHECKBOX = By.xpath(".//*[contains(@class, 'box-0-2-111 activeBox-0-2-116')]");
     private static final By GO_TO_PASSWORD = By.xpath(".//button[contains(@data-test-id, 'next-button')]");
     private static final By GO_TO = By.xpath(".//button[contains(@data-test-id, 'submit-button')]");
-    private static final By PASSWORD_VISIBLE = By.name("password");
     private static final By LOGIN_FRAME = By.xpath("//iframe[contains(@class, 'ag-popup__frame__layout__iframe')]");
     private static final By LOGIN_CONTENT = By.xpath(".//div[contains(@id, 'login-content')]");
 
@@ -36,7 +34,8 @@ public class NewMailLoginPage extends MailBase {
         LOGGER.warning("Находим кнопку для ввода логина и кликаем на нее");
         $(BUTTON_TO).shouldHave(text("Войти")).click();
         LOGGER.info("Переключаемся во фрейм формы логина");
-        Selenide.switchTo().frame("//iframe[contains(@class, 'ag-popup__frame__layout__iframe')]");
+        $(LOGIN_FRAME).shouldBe(visible);
+        Selenide.switchTo().frame($(LOGIN_FRAME).shouldBe(visible));
         LOGGER.warning("Ждем появления формы логина");
         $(LOGIN_CONTENT).shouldBe(visible);
         LOGGER.info("Находим поле для ввода почты и вводим почту");
