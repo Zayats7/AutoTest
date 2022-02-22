@@ -1,15 +1,16 @@
 package MainPages;
 
-import Base.MailBase;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.title;
 
 import java.util.logging.Logger;
 
-public class MailMainPage extends MailBase {
+public class MailMainPage {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(MailMainPage.class));
     private static final By WRITE_MESSAGE = By.xpath(".//a[contains(@title, 'Написать письмо')]");
@@ -22,29 +23,15 @@ public class MailMainPage extends MailBase {
     private static final By SENT_BUTTON = By.xpath(".//span[contains(@data-title-shortcut, 'Cmd+Enter')]");
     private static final By SEND_MESSAGE_LAYER = By.xpath(".//*[contains(@class, 'layer__link')]");
 
-    public MailMainPage(WebDriver driver) {
-        super(driver);
-    }
-
     public void writeMessageButton() {
         LOGGER.warning("Проверяем видимость кнопки создания нового сообщения и кликаем на нее");
         $(WRITE_MESSAGE).shouldBe(visible).click();
     }
 
-//    public void messageLayer() {
-//        LOGGER.warning("Ждем появления леера письма");
-//        $(MESSAGE_LAYER).shouldBe(visible);
-//    }
-
     public void whomLine() {
         LOGGER.warning("Проверяем видимость поля адресата и кликаем на него");
         $(WHOM).shouldBe(visible).click();
     }
-
-//    public void quickPeople() {
-//        LOGGER.warning("Ждем видимость леера быстрых адресатов");
-//        $(FAST_MESSAGE_LAYER).shouldBe(visible);
-//    }
 
     public void mySelfButton() {
         LOGGER.warning("Прверяем видимость себя в списке адресатов и кликаем");

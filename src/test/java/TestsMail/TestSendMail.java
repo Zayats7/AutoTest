@@ -1,5 +1,6 @@
 package TestsMail;
 
+import Base.MailBase;
 import LoginPages.NewMailLoginPage;
 import MainPages.MailMainPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.logging.Logger;
+
 import static com.codeborne.selenide.Selenide.*;
 
 /**
@@ -25,30 +27,31 @@ import static com.codeborne.selenide.Selenide.*;
 //TODO разобраться с extends (сделать обертку браузера в отдельном классе) (Progress: )
 //TODO разобраться с аннотациями (Выкинуть их из теста) (Progress: )
 //TODO перевести тест на селенид (Progress: 70%)
-public class TestSendMail {
+//TODO перенести константы в аргументы метода, в следствии чего переписать класс логина
+public class TestSendMail extends MailBase {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(TestSendMail.class));
     private static final By CHECK_E_MAIL = By.xpath(".//*[contains(@class, 'email-block__inner-content')]");
     private static final String LOGIN = "margleibblan@mail.ru";
-    private static final String WEB_SITE = "https://mail.ru/";
-    WebDriver driver = new ChromeDriver();
+    //private static final String WEB_SITE = "https://mail.ru/";
+    //WebDriver driver = new ChromeDriver();
 
-    @BeforeAll
-    static void registerDriver() {
-        WebDriverManager.chromedriver().setup();
-    }
-
-    @BeforeEach
-    void initDriver() {
-        LOGGER.info("Открываем начальную страницу");
-        open(WEB_SITE);
-    }
+//    @BeforeAll
+//    static void registerDriver() {
+//        WebDriverManager.chromedriver().setup();
+//    }
+//
+//    @BeforeEach
+//    void initDriver() {
+//        LOGGER.info("Открываем начальную страницу");
+//        open(WEB_SITE);
+//    }
 
     @Test
     public void testSentMessage() throws InterruptedException {
-        NewMailLoginPage loginPage = new NewMailLoginPage(driver);
+        NewMailLoginPage loginPage = new NewMailLoginPage();
         LOGGER.info("Запускаем браузер");
-        driver.get(WEB_SITE);
+        //driver.get(WEB_SITE);
 
         LOGGER.info("Логин");
         loginPage.doLogin();
@@ -62,7 +65,7 @@ public class TestSendMail {
         LOGGER.info("Заходим в почту");
         loginPage.goToMainPage();
 
-        MailMainPage mainPage = new MailMainPage(driver);
+        MailMainPage mainPage = new MailMainPage();
         LOGGER.info("Написать письмо");
         mainPage.writeMessageButton();
         LOGGER.info("Выбираем адресата");
@@ -77,11 +80,11 @@ public class TestSendMail {
         LOGGER.warning("Письмо отправлено, тест пройден");
     }
 
-    @AfterEach
-    void killDriver() {
-        LOGGER.info("Закрываем браузер");
-        driver.close();
-    }
+//    @AfterEach
+//    void killDriver() {
+//        LOGGER.info("Закрываем браузер");
+//        driver.close();
+//    }
 
 }
 

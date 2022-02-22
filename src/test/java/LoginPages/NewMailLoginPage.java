@@ -1,9 +1,8 @@
 package LoginPages;
 
-import Base.MailBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import com.codeborne.selenide.Selenide;
+import org.openqa.selenium.WebDriver;
 
 import java.util.logging.Logger;
 
@@ -11,9 +10,9 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-public class NewMailLoginPage extends MailBase {
+public class NewMailLoginPage {
 
-    private static final Logger LOGGER = Logger.getLogger(String.valueOf(MailLoginPage.class));
+    private static final Logger LOGGER = Logger.getLogger(String.valueOf(NewMailLoginPage.class));
     private static final By LOGIN_BOX = By.xpath(".//input[contains(@name, 'username')]");
     private static final By BUTTON_TO = By.xpath(".//button[contains(@data-testid, 'enter-mail-primary')]");
     private static final By PASSWORD_BOX = By.xpath(".//*[contains(@name, 'password')]");
@@ -24,11 +23,6 @@ public class NewMailLoginPage extends MailBase {
     private static final By GO_TO = By.xpath(".//button[contains(@data-test-id, 'submit-button')]");
     private static final By LOGIN_FRAME = By.xpath("//iframe[contains(@class, 'ag-popup__frame__layout__iframe')]");
     private static final By LOGIN_CONTENT = By.xpath(".//div[contains(@id, 'login-content')]");
-
-
-    public NewMailLoginPage(WebDriver driver) {
-        super(driver);
-    }
 
     public void doLogin() {
         LOGGER.warning("Находим кнопку для ввода логина и кликаем на нее");
