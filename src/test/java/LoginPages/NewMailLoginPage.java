@@ -2,8 +2,6 @@ package LoginPages;
 
 import org.openqa.selenium.By;
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.WebDriver;
-
 import java.util.logging.Logger;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,15 +14,13 @@ public class NewMailLoginPage {
     private static final By LOGIN_BOX = By.xpath(".//input[contains(@name, 'username')]");
     private static final By BUTTON_TO = By.xpath(".//button[contains(@data-testid, 'enter-mail-primary')]");
     private static final By PASSWORD_BOX = By.xpath(".//*[contains(@name, 'password')]");
-    private static final String LOGIN = "margleibblan@mail.ru";
-    private static final String PASSWORD = "qwedcxzasdfghjkl;'\\";
     private static final By CHECKBOX = By.xpath(".//*[contains(@class, 'box-0-2-111 activeBox-0-2-116')]");
     private static final By GO_TO_PASSWORD = By.xpath(".//button[contains(@data-test-id, 'next-button')]");
     private static final By GO_TO = By.xpath(".//button[contains(@data-test-id, 'submit-button')]");
     private static final By LOGIN_FRAME = By.xpath("//iframe[contains(@class, 'ag-popup__frame__layout__iframe')]");
     private static final By LOGIN_CONTENT = By.xpath(".//div[contains(@id, 'login-content')]");
 
-    public void doLogin() {
+    public void doLogin(String login) {
         LOGGER.warning("Находим кнопку для ввода логина и кликаем на нее");
         $(BUTTON_TO).shouldHave(text("Войти")).click();
         LOGGER.info("Переключаемся во фрейм формы логина");
@@ -33,7 +29,7 @@ public class NewMailLoginPage {
         LOGGER.warning("Ждем появления формы логина");
         $(LOGIN_CONTENT).shouldBe(visible);
         LOGGER.info("Находим поле для ввода почты и вводим почту");
-        $(LOGIN_BOX).shouldBe(visible).sendKeys(LOGIN);
+        $(LOGIN_BOX).shouldBe(visible).sendKeys(login);
     }
 
     public void doCheckBox() {
@@ -41,11 +37,11 @@ public class NewMailLoginPage {
         $(CHECKBOX).shouldBe(visible).click();
     }
 
-    public void doPassword() {
+    public void doPassword(String password) {
         LOGGER.warning("Проверяем видимость кнопки для ввода пароля и кликаем на нее");
         $(GO_TO_PASSWORD).shouldBe(visible).click();
         LOGGER.info("Находим поле для ввода пароля и вводим пароль");
-        $(PASSWORD_BOX).shouldBe(visible).sendKeys(PASSWORD);
+        $(PASSWORD_BOX).shouldBe(visible).sendKeys(password);
     }
 
     public void goToMainPage() {
