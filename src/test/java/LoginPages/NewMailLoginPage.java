@@ -1,5 +1,7 @@
 package LoginPages;
 
+import TestsMail.TestSendMail;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import com.codeborne.selenide.Selenide;
 import java.util.logging.Logger;
@@ -19,6 +21,7 @@ public class NewMailLoginPage {
     private static final By GO_TO = By.xpath(".//button[contains(@data-test-id, 'submit-button')]");
     private static final By LOGIN_FRAME = By.xpath("//iframe[contains(@class, 'ag-popup__frame__layout__iframe')]");
     private static final By LOGIN_CONTENT = By.xpath(".//div[contains(@id, 'login-content')]");
+    private static final By CHECK_E_MAIL = By.xpath(".//*[contains(@class, 'email-block__inner-content')]");
 
     public void doLogin(String login) {
         LOGGER.warning("Находим кнопку для ввода логина и кликаем на нее");
@@ -40,6 +43,9 @@ public class NewMailLoginPage {
     public void doPassword(String password) {
         LOGGER.warning("Проверяем видимость кнопки для ввода пароля и кликаем на нее");
         $(GO_TO_PASSWORD).shouldBe(visible).click();
+        LOGGER.info("Сравниваем введенный адрес почты и отображаемый");
+        String compareEmail = $(CHECK_E_MAIL).getText();
+        Assertions.assertEquals(TestSendMail.LOGIN, compareEmail, "Логины не совпадают");
         LOGGER.info("Находим поле для ввода пароля и вводим пароль");
         $(PASSWORD_BOX).shouldBe(visible).sendKeys(password);
     }
