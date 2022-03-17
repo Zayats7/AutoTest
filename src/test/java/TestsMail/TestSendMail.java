@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  * 7. Проверить что сообщение отправлено
  */
 
-//TODO Написать одтельный класс логгера и вытащить его из теста (Progress: %)
+//TODO Написать одтельный класс логгера и вытащить его из теста (Progress: 10%)
 public class TestSendMail extends MailBase {
 
     private static final Logger LOGGER = Logger.getLogger(String.valueOf(TestSendMail.class));
